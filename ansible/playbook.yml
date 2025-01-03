@@ -1,0 +1,12 @@
+---
+- hosts: amzn2023-base
+  become: true
+  roles:
+    - role: AMAZON2023-CIS
+      tags:
+        - level1-server
+        - level2-server
+        - automated
+    - role: ch_collections.base.clamav
+    - role: ch_collections.base.cron_control
+    - role: ch_collections.security_banner.banner
