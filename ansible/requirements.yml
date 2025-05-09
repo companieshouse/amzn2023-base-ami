@@ -1,0 +1,18 @@
+---
+collections:
+# Vars file needs to be added for Amazon 2023. Will be a copy of the already existing Amazon-2.yml file, but named Amazon-2023.yml 
+  - name: https://github.com/companieshouse/ansible-collections.git#ch_collections/base
+    version: 0.1.144
+    type: git
+  - name: community.general
+    version: 4.8.0
+  - name: ansible.posix
+    version: 1.5.4
+  - name: https://github.com/companieshouse/ansible-collections.git#ch_collections/security_banner
+    type: git
+
+roles:
+  - name: geerlingguy.clamav
+# geerlingguy role for AMAZON2023-CIS hardening needs to be downloaded and modified to remove CIS check 1.2.2 and 1.2.4, as Amazon Linux 2023 repo's are not compatible with gpgpcheck=0 setting
+  - src: https://github.com/christiangda/ansible-role-amazon-cloudwatch-agent.git
+    name: cloudwatch-agent
