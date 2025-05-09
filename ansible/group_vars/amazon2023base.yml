@@ -1,0 +1,70 @@
+---
+## Add any additional packages
+## sg3_utils has been removed as its not available on AMazon Linux 2023. A Fedora COPR package is available but may require approval before including: https://copr.fedorainfracloud.org/coprs/frederickding/sg3_utils/
+additional_packages:
+  - nfs-utils
+  - iscsi-initiator-utils
+  - device-mapper-multipath
+  - git
+  - screen
+  - logrotate
+  - python3
+  - python3-pip
+  - python3-libselinux
+  - python3-libsemanage
+  - python3-policycoreutils
+  - python39
+  - chrony
+  - audit
+  - audit-libs
+  - audispd-plugins
+  - rsyslog
+  - openscap-scanner
+  - scap-security-guide
+  - lynx
+  - findutils
+  - procps
+  - passwd
+  - hostname
+  - systemd-journal-remote
+  - sysstat
+
+ssm_package:
+  - https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+
+pip_install_packages:
+  - name: pip
+    state: latest
+  - name: ansible
+    version: "2.10.7"
+  - name: j2cli
+    umask: "0022"
+  - name: selinux
+    umask: "0022"
+
+#clamav_mirror: http://clamav-mirror.sharedservices.aws.internal
+
+## CloudWatch Agent Variables
+cwa_conf_json_file_content: "{{ lookup('file', 'files/cloudwatch-config.json') }}"
+
+## CIS Hardening Variables
+amzn2023cis_time_synchronization: chrony
+amzn2023cis_time_synchronization_servers: ["169.254.169.123"] #Default VPC source
+#Disable crypto setting changes as it causes DNF to fail installs
+amzn2023cis_rule_1_10: false
+#Disable GRUB tasks
+amzn2023cis_rule_1_4_2: false
+#Disable Firewall Tasks, we manage this in app deploy
+amzn2023cis_rule_3_4_1: false
+amzn2023cis_rule_3_4_2: false
+#Disable rsyslog/syslog-ng, using cloudwatch
+amzn2023cis_rule_4_2_1: false
+#Allow no password set for EC2 user
+amzn2023cis_rule_5_3_4: false
+
+# Setup hosts.allow entries
+amzn2023cis_host_allow:
+  - "127.0.0.1"
+  - "10.0.0.0/255.0.0.0"
+  - "172.16.0.0/255.240.0.0"
+  - "192.168.0.0/255.255.0.0"
