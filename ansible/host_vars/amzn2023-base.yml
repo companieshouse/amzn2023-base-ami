@@ -1,0 +1,26 @@
+---
+amzn2023cis_time_synchronization_servers:
+  - "169.254.169.123"
+# Disable global gpg_check as it breaks "dnf"
+amzn2023cis_rule_1_2_2: false
+amzn2023cis_rule_1_2_4: false
+# Disable firewall tasks
+amzn2023cis_rule_3_4_1_1: false
+amzn2023cis_rule_3_4_1_2: false
+amzn2023cis_rule_3_4_2_1: false
+amzn2023cis_rule_3_4_2_2: false
+amzn2023cis_rule_3_4_2_3: false
+amzn2023cis_rule_3_4_2_4: false
+amzn2023cis_rule_3_4_2_5: false
+amzn2023cis_rule_3_4_2_6: false
+amzn2023cis_rule_3_4_2_7: false
+# Disable PAM password aging
+amzn2023cis_rule_4_6_1_1: false
+amzn2023cis_rule_4_6_1_2: false
+amzn2023cis_rule_4_6_1_3: false
+amzn2023cis_rule_4_6_1_4: false
+amzn2023cis_rule_4_6_1_5: false
+# Disable rootpw check as the Amazon-sourced AMI has no default password
+amzn2023cis_rule_4_6_6: false
+
+clamav_mirror: http://clamav-mirror.sharedservices.aws.internal
