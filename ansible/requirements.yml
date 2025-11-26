@@ -7,4 +7,4 @@ collections:
 roles:
   - src: https://github.com/ansible-lockdown/AMAZON2023-CIS
     name: AMAZON2023-CIS
-    version: 1.2.1
+    version: 1.2.4
