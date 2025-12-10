@@ -2,6 +2,7 @@
 - hosts: amzn2023-base
   become: true
   roles:
+    - role: required_packages
     - role: AMAZON2023-CIS
       tags:
         - level1-server
