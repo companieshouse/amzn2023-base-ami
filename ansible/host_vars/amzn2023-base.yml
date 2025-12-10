@@ -24,3 +24,7 @@ amzn2023cis_rule_4_6_1_5: false
 amzn2023cis_rule_4_6_6: false
 
 clamav_mirror: http://clamav-mirror.sharedservices.aws.internal
+
+required_packages:
+  - git
+  - htop
