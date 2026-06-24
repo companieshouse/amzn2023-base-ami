@@ -50,6 +50,12 @@ variable "host_alias" {
   description = "The name of the host alias to use for configuration purposes"
 }
 
+variable "build_date" {
+  type        = string
+  default     = ""
+  description = "ISO 8601 UTC (human-readable) timestamp of the build; surfaced as the AMI's BuildDate tag"
+}
+
 variable "force_delete_snapshot" {
   type        = bool
   default     = false
