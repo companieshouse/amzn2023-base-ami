@@ -11,3 +11,11 @@
     - role: companieshouse.security.clamav_ng
     - role: ch_collections.base.cron_control
     - role: ch_collections.security_banner.banner
+
+  tasks:
+    # AL2023 locks versions to the AMI release; explicitly setting here for CVE-2026-113470
+    - name: Update ca-certificates explicitly
+      ansible.builtin.dnf:
+        name: ca-certificates
+        state: latest
+        releasever: latest
