@@ -7,8 +7,8 @@
         package_overrides_list:
           - name: ca-certificates
             releasever: latest
-            min_version: "2025.2.76" # placeholder until fix released
-            reason: CVE-2026-113470 # note the fix isn't released yet, min_ver will be updated
+            min_version: "2025.2.76-1.0.amzn2023.0.4"
+            reason: CVE-2026-113470 # https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3306.html
     - role: required_packages
     - role: AMAZON2023-CIS
       tags:
